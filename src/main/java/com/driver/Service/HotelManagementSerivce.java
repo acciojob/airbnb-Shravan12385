@@ -28,7 +28,8 @@ public class HotelManagementSerivce {
     }
 
     public Hotel getHotelWithMostFacilities() {
-        return null;
+
+        return hotelManagementRepository.getHotelWithMostFacilities();
     }
 
     public void addUser(User user) {

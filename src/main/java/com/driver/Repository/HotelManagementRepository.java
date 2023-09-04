@@ -48,4 +48,25 @@ public class HotelManagementRepository {
        }
        return  count;
     }
+
+    public Hotel getHotelWithMostFacilities() {
+        int data = 0;
+        Hotel hotels = null;
+        for(String ele: hoteldb.keySet())
+        {
+            Hotel hotel = hoteldb.get(ele);
+            List<Facility> facilities = hotel.getFacilities();
+            if(facilities.size()>data)
+            {
+                data = facilities.size();
+                hotels = hotel;
+            }
+            else if(facilities.size()==data)
+            {
+                int com = hotel.getHotelName().compareTo(hotels.getHotelName());
+                if(com>0) hotels  = hotel;
+            }
+        }
+        return hotels;
+    }
 }
