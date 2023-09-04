@@ -17,10 +17,16 @@ public class HotelManagementRepository {
     Map<Integer, Booking> Bookingdb = new HashMap<>();
 
     public String  savehotel(Hotel hotel) {
-        if(hoteldb.containsKey(hotel.getHotelName()))  return "FAILURE";
+        if(hoteldb.containsKey(hotel.getHotelName()))
+        {
+            return "FAILURE";
+        }
+        else
+        {
+            hoteldb.put(hotel.getHotelName(),hotel);
+            return "SUCCESS";
+        }
 
-        hoteldb.put(hotel.getHotelName(),hotel);
-        return "SUCCESS";
     }
 
     public void saveuser(User user) {
