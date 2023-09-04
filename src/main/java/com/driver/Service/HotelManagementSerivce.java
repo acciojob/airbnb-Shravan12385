@@ -13,12 +13,13 @@ import java.util.List;
 public class HotelManagementSerivce {
     @Autowired
     HotelManagementRepository hotelManagementRepository;
-    public void addHotel(Hotel hotel) {
-        hotelManagementRepository.savehotel(hotel);
+    public String  addHotel(Hotel hotel) {
+        return hotelManagementRepository.savehotel(hotel);
     }
 
-    public void putHotel(List<Facility> newFacilities, String hotelName) {
-        hotelManagementRepository.update(newFacilities,hotelName);
+    public Hotel putHotel(List<Facility> newFacilities, String hotelName) {
+        return hotelManagementRepository.update(newFacilities,hotelName);
+
     }
 
     public int  getBooking(Integer aadharCard) {

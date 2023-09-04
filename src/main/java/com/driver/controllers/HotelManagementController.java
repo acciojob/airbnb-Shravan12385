@@ -31,14 +31,15 @@ public class HotelManagementController {
         //incase the hotelName is null or the hotel Object is null return an empty a FAILURE
         //Incase somebody is trying to add the duplicate hotelName return FAILURE
         //in all other cases return SUCCESS after successfully adding the hotel to the hotelDb.
+        hotelManagementSerivce.addHotel(hotel);
         if(hotel.getHotelName()==null || hotel==null )
         {
-            hotelManagementSerivce.addHotel(hotel);
-            return "SUCCESS";
+
+            return "an empty a FAILURE";
         }
         else
         {
-            return  "FAILURE";
+            return   hotelManagementSerivce.addHotel(hotel);
         }
     }
 
@@ -47,9 +48,14 @@ public class HotelManagementController {
 
         //You need to add a User Object to the database
         //Assume that user will always be a valid user and return the aadharCardNo of the user
-        hotelManagementSerivce.addUser(user);
+        if(user!=null)
+        {
+            hotelManagementSerivce.addUser(user);
+            return user.getaadharCardNo();
+        }
 
-       return user.getaadharCardNo();
+
+       return 0;
     }
 
     @GetMapping("/get-hotel-with-most-facilities")
@@ -93,8 +99,8 @@ public class HotelManagementController {
         //If the hotel is already having that facility ignore that facility otherwise add that facility in the hotelDb
         //return the final updated List of facilities and also update that in your hotelDb
         //Note that newFacilities can also have duplicate facilities possible
-        hotelManagementSerivce.putHotel(newFacilities,hotelName);
-        return null;
+       return  hotelManagementSerivce.putHotel(newFacilities,hotelName);
+
     }
 
 }
